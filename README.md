@@ -8,7 +8,9 @@
 
 VMware Horizon Usage report which works in conjunction with [SQLServer Powershell Module](https://www.powershellgallery.com/packages/SqlServer/22.1.1) and [ImportExcel Powershell Module](https://github.com/dfinke/ImportExcel).
 
-Please refer to my blog [website](https://www.childebrandt42.blog) for more detailed information about this project.
+Please refer to my blog [Blog Website](https://www.childebrandt42.blog) for more detailed information about this project. 
+
+Blog post for this project [Blog Post](https://childebrandt42.blog/2024/03/12/horizon-usage-report-understanding-your-users-well-maybe)
 
 # :books: Sample Reports
 
