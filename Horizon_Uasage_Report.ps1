@@ -39,6 +39,9 @@ $SQLServers = @('SQL Server FQDN') # SQL Server FQDN
 # DB Name
 $dbName = "Horizon Envents DB Name" # Horizon Events DB Name
 
+# Table Prefix
+$Prefix = "" # Table Prefix if configured, IF not leave blank!
+
 # Report Name
 $ReportName = "UserReport" # Report Name
 
@@ -96,6 +99,16 @@ function Get-Events {
 # Create Blank Arrays
 $Events = @('')
 $EventsHST = @('')
+
+If($Prefix -ne ""){
+    $prefix = "dbo." + $Prefix
+    $SQLQueryHST = "SELECT * from $dbName.$($Prefix)event_historical where (EventType = 'AGENT_CONNECTED') and (Time > '$TimeBack') order by time desc"
+    $SQLQueryEvent = "SELECT * from $dbName$($Prefix).event where (EventType = 'AGENT_CONNECTED') and (Time > '$TimeBack') order by time desc"
+}
+else{
+    $SQLQueryHST = "SELECT * from $dbName.event_historical where (EventType = 'AGENT_CONNECTED') and (Time > '$TimeBack') order by time desc"
+    $SQLQueryEvent = "SELECT * from $dbName.event where (EventType = 'AGENT_CONNECTED') and (Time > '$TimeBack') order by time desc"
+}
 
 $SQLQueryHST = "SELECT * from $dbName.event_historical where (EventType = 'AGENT_CONNECTED') and (Time > '$TimeBack') order by time desc"
 $SQLQueryEvent = "SELECT * from $dbName.event where (EventType = 'AGENT_CONNECTED') and (Time > '$TimeBack') order by time desc"
